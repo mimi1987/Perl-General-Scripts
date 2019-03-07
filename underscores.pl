@@ -1,8 +1,20 @@
 use strict;
 use warnings;
-use v5.14;
+use v5.8;
 
-# prefix and suffix a number with underscores and if the last character is a number the suffic underscore is removed.
+print "Underscoreing: ";
 my $text = <STDIN>;
-$text =~ s/(\d)+/_$1_/ig;
-print lc substr $text, 0, -1;
+chomp $text;
+$text =~ s/(\d+)/_$1_/ig;
+my $last_chr = substr $text, -1;
+my $first_chr = substr $text, 0, 1;
+
+if ($first_chr eq "_") {
+  $text = substr $text, 1;
+}
+
+if ($last_chr eq "_") {
+  $text = substr $text, 0, -1;
+}
+
+print "$text\n";
