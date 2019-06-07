@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use v5.8;
+use v5.20;
 
 print "Underscoreing: ";
 my $text = <STDIN>;
