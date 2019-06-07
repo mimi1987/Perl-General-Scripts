@@ -1,6 +1,6 @@
 use v5.20;
 
-print "Underscoreing: ";
+print "Underscoring: ";
 my $text = <STDIN>;
 chomp $text;
 $text =~ s/(\d+)/_$1_/ig;
