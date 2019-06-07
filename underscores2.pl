@@ -1,7 +1,5 @@
 # A much shorter version of the underscore.pl program.
 
-use strict;
-use warnings;
 use v5.20;
 
 print "Underscoreing: ";
