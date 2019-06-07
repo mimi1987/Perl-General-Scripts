@@ -7,14 +7,14 @@ sub average {
 }
 
 sub above_average {
-  my $divident = &average(@_);
+  my $dividend = &average(@_);
   my $average = 0;
   my @result = ();
   foreach (@_) {
     $average += $_;
     push @result, $_;
   }
-  my $quotient = $average / $divident;
+  my $quotient = $average / $dividend;
   foreach (@result) {
     if ($_ > $quotient) {
       print "I'm above average: $_.\n";
