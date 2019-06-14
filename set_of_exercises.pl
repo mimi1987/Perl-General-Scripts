@@ -60,3 +60,21 @@ foreach $word (@words) {
 foreach (sort keys %count) {
   print "$_ was seen $count{$_} times.\n";
 }
+
+###############################################################################
+# EXERCISE 3, CHAPTER 6
+
+# Print all the keys and values of %ENV.
+# foreach (values %ENV) {
+#   print length "$_";
+#   print "\n";
+# }
+
+# while (my($key, $value) = each %ENV) {
+#   printf "%36s => %10s\n", $key, $value;
+# }
+
+foreach (sort keys %ENV) {
+  printf "%36s => %s\n", $_, $ENV{$_};
+}
+
