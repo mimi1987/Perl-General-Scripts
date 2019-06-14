@@ -16,6 +16,7 @@ chomp(my $name = <STDIN>);
 print "The family name of $name is $names{$name}.\n";
 
 
+###################################################################################################
 # EXERCISE 2,CHAPTER 6 HASHES - Count the appearence of words.
 # Read a series of words (one word per line) until end of input.
 my(@words, $word, %word_seen_before);
@@ -35,3 +36,27 @@ print "Please enter some words on separate lines: \n";
  while (my($key, $value) = each %word_seen_before) {
    print "$key => $value\n";
  }
+ 
+ 
+ ###################################################################################################################
+  # Another version of the previous exercise.
+  use v5.20;
+
+# Declare our identifiers that we need.
+my(@words, %count, $word);
+
+# Ask the user for input.
+print "Please enter some words one at each line: \n";
+chomp(@words = <STDIN>);
+
+# Save the words of the words list into a hash,
+# and increment the value by 1 everytime the key appearce.
+foreach $word (@words) {
+  $count{$word} += 1;
+}
+
+# iterate of the hash and print out all the keys
+# with corresponding values in sorted code point order.
+foreach (sort keys %count) {
+  print "$_ was seen $count{$_} times.\n";
+}
