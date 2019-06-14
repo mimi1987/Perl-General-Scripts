@@ -78,3 +78,30 @@ foreach (sort keys %ENV) {
   printf "%36s => %s\n", $_, $ENV{$_};
 }
 
+############################################################################
+# Using the match operator.
+$_ = "yabba dabba doo";
+
+# The simpelst form to match is a sequence it means literal characters.
+if (/abba/) {
+  print "It matched!\n";
+}
+
+# Whitespace is significant in a pattern. This is the reason why it doesnt match.
+if (/ab da/) {
+  print "It matched!\n";
+} else {
+  print "It doesn't matched!\n";
+}
+
+# Here mathces the sequence and the withespace $_.
+if (/ba da/) {
+  print "It matched!\n";
+}
+
+# The pattern in the match operator is a double-quoted context,
+# this means I can do everything what I can do in normal double-quotes,
+# what in simple word means the pattern interpolates variables, magic characters.
+/coke\tsprite/  # \t for tab.
+
+ 
