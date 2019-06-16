@@ -105,3 +105,13 @@ if (/ba da/) {
 /coke\tsprite/  # \t for tab.
 
  
+#####################################################
+# That's a command line pattern matcher, with the first argument as the pattern.
+while (<STDIN>) {
+  chomp;
+  if (/$ARGV[0]/) {
+    print "\tIt matched!\n";
+  } else {
+    print "\tNo match!\n";
+  }
+}
