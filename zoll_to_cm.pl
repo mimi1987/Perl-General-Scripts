@@ -1,5 +1,5 @@
 use strict;
-use POSIX;
+use POSIX; # used to get floor function
 
 # Converts a passed zoll value to cm and prints the result in the needed format
 sub zoll_to_cm
