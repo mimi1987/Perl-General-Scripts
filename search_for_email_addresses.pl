@@ -1,4 +1,4 @@
-# Just a TUT!
+# Just a TUT exercise!
 
 use strict;
 use warnings;
