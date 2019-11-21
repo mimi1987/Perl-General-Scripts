@@ -9,6 +9,9 @@ sub main {
 	if ($text =~ /(\w{2}\d{4})/) {
 		print "Device Code: +++ $1 +++\n";
 	}
+	else {
+		print "No Device Code found in text.\n";
+	}
 }
 
 main();
