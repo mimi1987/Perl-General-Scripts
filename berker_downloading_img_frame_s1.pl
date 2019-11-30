@@ -31,7 +31,7 @@ sub main {
 		if ($website =~ m~(ecatimages/detail/(\d+.jpg))~ig) {
 			my $img_url = 'https://www.hager.de/'. $1;
 			print "Downloading image: $img_url\n";
-			my $img_sto_path = "C:\\Users\\mmigs\\Downloads\\$2";
+			my $img_sto_path = "C:\\Users\\mmigs\\Downloads\\$2"; # Put in here your stoarge path.
 			getstore $img_url, $img_sto_path;
 			print "Images SAVED!\n";
 		}
@@ -41,7 +41,7 @@ sub main {
 	}
 	
 	# Show what's in @products.
-	print Dumper(@products);
+	#print Dumper(@products);
 }
 
 main();
