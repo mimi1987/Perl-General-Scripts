@@ -1,4 +1,4 @@
-package Tony;
+package Tonie;
 
 use strict;
 use warnings;
