@@ -6,38 +6,46 @@ use Selenium::Firefox;
 use Selenium::Remote::Driver;
 use Selenium::Remote::WDKeys;
 
+# Constructor
 sub new {
   my $class = shift;
   my %args = @_;
-
   bless \%args, $class;
 }
 
+# Getter Methods
+for my $name (qw[geckodriver_path email_address password]) {
+  no strict 'refs';
+  *{"get_$name"} = sub {
+    use strict 'refs';
+    my $self = shift;
+    print $self->{$name}, "\n";
+  };
+}
 
-my $gecko_driver_path = 'C:\geckodriver-v0.26.0-win64\geckodriver.exe';
-my $driver = Selenium::Firefox->new(binary => $gecko_driver_path);
-# $driver->debug_on;
+# Create Driver For Firefox Webbrowser
+sub create_driver {
+  my $self = shift;
+  my $driver = Selenium::Firefox->new(binary => $self->{geckodriver_path});
+}
 
-# Pass the email address to the login form.
-$driver->get('https://meine.tonies.de/login');
-my $elem_email = $driver->find_element_by_id('input-id-email');
-$elem_email->send_keys('fill_in_email');
+sub fill_out_form {
+  my ($self, $driver) = @_;
 
-# Pass the password to the login form.
-my $elem_pass = $driver->find_element_by_id('input-id-password');
-$elem_pass->send_keys('fill_in_password');
-sleep 1;
-$driver->send_keys_to_active_element(KEYS->{'enter'});
+  # Pass the email address to the login form.
+  $driver->get('https://meine.tonies.de/login');
+  my $elem_email = $driver->find_element_by_id('input-id-email');
+  $elem_email->send_keys($self->{email_address});
 
+  # Pass the password to the login form.
+  my $elem_pass = $driver->find_element_by_id('input-id-password');
+  $elem_pass->send_keys($self->{password});
+  sleep 1;
+  $driver->send_keys_to_active_element(KEYS->{'enter'});
+  sleep 30;
+  $driver->quit();
+}
 
-
-# Upload a song.
-my $tonies = $driver->find_element_by_partial_link_text('/tonies');
-$driver->send_keys_to_active_element(KEYS->{'enter'}) if $tonies != 0
-or die "Cant't open tonies!";
-
-
-sleep 5;
-$driver->quit();
+# Upload Song
 
 1;
